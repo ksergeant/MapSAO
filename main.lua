@@ -10,8 +10,13 @@ if arg[#arg] == "-debug" then require("mobdebug").start() end
 
 local map = require("tilesheetMapMain")
 local kirito = require("kirito")
+local swordFire = require("SwordFire")
 local i = 2
+local n = 1
+local chronoSword = 0
 local derniereKey = {}
+local sword = love.graphics.newImage("sword3.png")
+
 function love.load()
   
   largeur = love.graphics.getWidth()
@@ -19,6 +24,10 @@ function love.load()
   
   kirito.Load()
   map.Load()
+  swordFire.Load()
+  
+  swordFire.x = kirito.x - 30
+  swordFire.y = kirito.y 
 end
 
 function love.update(dt)
@@ -30,24 +39,39 @@ function love.update(dt)
   if love.keyboard.isDown("left") then
       
       kirito.x = kirito.x - 3
-    
-  end
-  
-  if love.keyboard.isDown("right") then
-    
-      kirito.x = kirito.x + 3
       
+    swordFire.angle = 225
+    swordFire.x = kirito.x - 30
+    swordFire.y = kirito.y + 18
+    
   end
   
-  if love.keyboard.isDown("up") then
+  
+   if love.keyboard.isDown("right") then
+    
+    kirito.x = kirito.x + 3
+    swordFire.angle = 45
+    swordFire.x = kirito.x + 30
+    swordFire.y = kirito.y + 15
+  
+  end
+  
+   if love.keyboard.isDown("up") then
       
       kirito.y = kirito.y - 3
+    swordFire.angle = 0
+    swordFire.x = kirito.x - 25
+    swordFire.y = kirito.y - 10
      
   end
   
   if love.keyboard.isDown("down") then
 
       kirito.y = kirito.y + 3
+       
+    swordFire.angle = 0
+    swordFire.x = kirito.x -30
+    swordFire.y = kirito.y 
       
   end
   
@@ -99,13 +123,36 @@ function love.update(dt)
   if love.keyboard.isDown("down") and love.keyboard.isDown("left") then
 
       kirito.y = kirito.y -3
-    kirito.x = kirito.x +3
-    
-        kirito.currentImage = kirito.deplacementBas[2]
+      kirito.x = kirito.x +3
+      kirito.currentImage = kirito.deplacementBas[2]
 
       
   end
 
+ 
+ chronoSword = chronoSword + 0.2
+ 
+ 
+ 
+ if n > #swordFire.images then
+   
+   n = 1
+  end
+  
+  if chronoSword > 100 then
+  
+  n = n + 0.1
+  swordFire.currentImage = swordFire.images[math.floor(n)]
+  end
+  
+  if chronoSword >200 then
+  
+    chronoSword = 0
+    swordFire.currentImage = swordFire.images[1]
+    n = 1
+  end
+
+print (chronoSword)
 end
 
 function love.draw()
@@ -114,12 +161,14 @@ function love.draw()
     map.Draw()
     
    love.graphics.draw(kirito.TileSheet.TileSheet, kirito.currentImage , kirito.x, kirito.y, 
-      0, 2, 2, kirito.ox, kirito.oy)
+      0, 3, 3, kirito.ox, kirito.oy)
     
-    
+  --love.graphics.draw(sword, kirito.x+2, kirito.y+12, 
+   --   0, 3.6, 3.6, kirito.ox, kirito.oy)
     --love.graphics.line(largeur/2, 0, largeur/2, hauteur)
     --love.graphics.line(0, hauteur/2, largeur, hauteur/2)
-    
+    love.graphics.draw(swordFire.TileSheet.TileSheet, swordFire.currentImage , swordFire.x, swordFire.y, 
+      swordFire.angle, 4, 4, swordFire.ox, swordFire.oy)
     
     
 end
