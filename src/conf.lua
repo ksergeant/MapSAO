@@ -5,5 +5,5 @@ function love.conf(t)
     t.window.x = 0
     t.window.y = 0
     t.window.display = 2
-    t.window.title = "Map Aventure"
+    t.window.title = "SAO Adventure"
   end
