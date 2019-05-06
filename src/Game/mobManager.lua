@@ -1,0 +1,3 @@
+local mobManager = {}
+
+return mobManager;
