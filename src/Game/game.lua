@@ -13,6 +13,8 @@ function game.Load()
     game.myFloorManager.CreateFloor("EasyCity",1,"Images/Floor/1/Map/Sample1.png")
     game.myFloorManager.CreateFloor("MidCity",2,"Images/Floor/1/Map/Sample2.png")
     game.myFloorManager.CreateFloor("HardCity",3,"Images/Floor/1/Map/Sample2.png")
+    game.mySpriteManager.CreateSprite("Hero",10, 10)
+    game.mySpriteManager.CreateSprite("Hero2",10, 10)
    
    -- game.kirito.Load()
    -- game.swordFire.Load()
@@ -25,13 +27,14 @@ function game.Update(dt)
    -- game.swordFire.Update(dt)
   --  game.floor1.Update(dt)
     game.myFloorManager.Update(dt, game.myGameStates.myFloorActuel)
+    game.mySpriteManager.Update(dt)
 
 end
 
 function game.Draw(dt)
 
     game.myFloorManager.Draw()
-
+    game.mySpriteManager.Draw()
   --  game.kirito.Draw(dt, game.cameraX, game.cameraY)
   --  game.swordFire.Draw(dt, game.cameraX, game.cameraY)
   --  game.floor1.Draw(dt, game.cameraX, game.cameraY)

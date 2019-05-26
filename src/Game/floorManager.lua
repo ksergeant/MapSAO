@@ -3,13 +3,15 @@ local floorManager = {}
 floorManager.list_floor = {}
 floorManager.floorNow = {}
 
+local floorModel = require("Game/Floor/floor")
+
  function floorManager.CreateFloor(pName, pNumber, pMap) 
     
-    local floor = {}
-    floor.name = pName
-    floor.number = pNumber
-    floor.map = love.graphics.newImage(pMap)
-    table.insert(floorManager.list_floor, pNumber, floor)
+    local floorTempo = {}
+    
+    floorTempo = floorModel.Create(pName, pNumber, pMap)
+
+    table.insert(floorManager.list_floor, pNumber, floorTempo)
     print("Floor Create")
     
 
