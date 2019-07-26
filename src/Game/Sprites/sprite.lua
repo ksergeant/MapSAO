@@ -13,8 +13,8 @@ function spriteModel.Create(pName, pPosX, pPosY)
     sprite.oY = 0
     sprite.type = nil
     sprite.currentImage = 1
-    --sprite.tileSheet = tileSheetModel.CreateTileSheet(pNameFile, pTileWidth, pTileHeight, pMap)
-    --sprite.frames = sprite.tileSheet.frames
+    sprite.tileSheet = tileSheetModel.CreateTileSheet(pNameFile, pTileWidth, pTileHeight, pMap)
+    sprite.frames = sprite.tileSheet.frames
     
     function sprite.anime()
     

@@ -17,6 +17,10 @@ local floorModel = require("Game/Floor/floor")
 
 end
 
+function floorManager.Load(pFloorNumber)
+
+end
+
 function floorManager.Update(dt,pFloorNumber)
 
     -- on recherche dans quel floor on est actuellement

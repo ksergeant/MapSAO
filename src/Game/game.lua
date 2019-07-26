@@ -2,6 +2,9 @@ local game = {}
 --game.kirito = require("Characters/Kirito/kirito")
 --game.swordFire = require("Weapons/SwordFire")
 --game.floor1 = require("Floor/1/Map/Floor1_Map")
+
+
+
 game.mySpriteManager = require("Game/spriteManager")
 game.myGameStates = require("Game/gameStates")
 game.myCamera = require("Game/camera")
