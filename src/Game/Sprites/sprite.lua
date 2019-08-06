@@ -2,7 +2,7 @@ local spriteModel = {}
 
 local tileSheetModel = require("Game/Sprites/tileSheet")
 
-function spriteModel.Create(pName, pPosX, pPosY)
+function spriteModel.Create(pName, pPosX, pPosY, pNameFile)
   
     local sprite = {}
     
@@ -13,9 +13,12 @@ function spriteModel.Create(pName, pPosX, pPosY)
     sprite.oY = 0
     sprite.type = nil
     sprite.currentImage = 1
+    
+    if pNameFile ~=nil then
     sprite.tileSheet = tileSheetModel.CreateTileSheet(pNameFile, pTileWidth, pTileHeight, pMap)
     sprite.frames = sprite.tileSheet.frames
     
+    end
     function sprite.anime()
     
       if sprite.currentImage  < #sprite.frames then 
